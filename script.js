@@ -71,3 +71,24 @@ const game = {
   // 7.
   team1 < team2 && console.log("Team 1 is more likely to win.");
   team1 > team2 && console.log("Team 2 is more likely to win.");
+
+const {scored} = game;
+console.log(scored);
+
+for (const [goal,player] of scored.entries()){
+  console.log(`Goal ${goal+1} : ${player}`)
+};
+//2
+let sum = 0,avg;
+const value = Object.values(game.odds);
+for (const values of value){
+ sum = sum + values;
+ avg = sum / value.length;
+ 
+}
+console.log(`Average odd is ${avg}`);
+//3
+for (const [team,odd] of Object.entries(game.odds)){
+  const strTeam =  team === 'x'? 'draw' : `victory ${game[team]}`
+  console.log(`Odd of ${strTeam} : ${odd}`);
+}
