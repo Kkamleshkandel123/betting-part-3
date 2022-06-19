@@ -92,3 +92,36 @@ for (const [team,odd] of Object.entries(game.odds)){
   const strTeam =  team === 'x'? 'draw' : `victory ${game[team]}`
   console.log(`Odd of ${strTeam} : ${odd}`);
 }
+
+//1
+const uniqueEvents = [...new Set(gameEvents.values())];
+console.log(uniqueEvents);
+
+//2
+gameEvents.delete(64);
+console.log(gameEvents);
+
+//3
+const eventsInGameTime = () => {
+  const timeMatch = 90;
+  let inGameTime = [];
+  for (const [key] of gameEvents) {
+    if (key <= timeMatch) inGameTime = [...inGameTime, key];
+  }
+  console.log(
+    `An event happend, on average ${timeMatch / inGameTime.length} minutes`
+  );
+};
+eventsInGameTime();
+//4
+
+const whichHalfTimeHappend = (mapArrays) => {
+  for (const [key, value] of mapArrays) {
+    key <= 45
+      ? console.log(`[FIRST HALF] ${key}: ${value}`)
+      : console.log(`[SECOND HALF] ${key}: ${value}`);
+  }
+};
+
+whichHalfTimeHappend(gameEvents);
+
